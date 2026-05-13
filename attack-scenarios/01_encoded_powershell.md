@@ -117,5 +117,63 @@ This validates:
 
 - Sysmon telemetry collection
 - Wazuh ingestion pipeline
+
+---
+
+# Investigation Analysis
+
+## Observed Behavior
+
+The endpoint executed PowerShell with encoded command-line arguments using the `-enc` parameter and bypassed normal execution policy protections.
+
+Telemetry showed subsequent creation of temporary PowerShell script files inside the user Temp directory.
+
+This behavior triggered Sysmon Event ID 11 and generated a Wazuh high-severity alert.
+
+---
+
+## Indicators Observed
+
+| Indicator | Evidence |
+|---|---|
+| Encoded PowerShell | `-enc` argument |
+| Policy bypass | `ExecutionPolicy Bypass` |
+| Temp PS1 creation | `__PSScriptPolicyTest_*.ps1` |
+| Suspicious staging behavior | Wazuh Rule 92213 |
+
+---
+
+## Relevant Telemetry
+
+| Source | Event |
+|---|---|
+| Sysmon | Event ID 1 — Process Creation |
+| Sysmon | Event ID 11 — File Creation |
+| Wazuh | Rule ID 92213 |
+
+---
+
+## Analyst Assessment
+
+The observed activity resembles common attacker tradecraft involving:
+
+- PowerShell execution
+- encoded payload delivery
+- temporary script staging
+
+Although the payload used in this lab was benign, the telemetry and detection flow accurately simulate malicious behavior frequently observed in real-world intrusions.
+
+---
+
+## Detection Outcome
+
+The lab successfully validated:
+
+- Sysmon telemetry visibility
+- Wazuh event ingestion
+- file creation monitoring
+- suspicious PowerShell activity detection
+- SOC investigation workflow
+
 - Detection capability
 - Threat hunting workflow
