@@ -1,1 +1,17 @@
+<group name="windows,powershell,">
 
+  <rule id="100100" level="12">
+
+    <if_sid>91852</if_sid>
+
+    <field name="data.win.eventdata.commandLine">(?i)-enc</field>
+
+    <description>Encoded PowerShell execution detected</description>
+
+    <mitre>
+      <id>T1059.001</id>
+    </mitre>
+
+  </rule>
+
+</group>
