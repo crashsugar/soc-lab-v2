@@ -26,6 +26,7 @@ The detection monitors Sysmon process creation events and searches for the `-enc
     <description>Encoded PowerShell execution detected</description>
 
     <mitre>
+      <id>T1059</id>
       <id>T1059.001</id>
     </mitre>
 
