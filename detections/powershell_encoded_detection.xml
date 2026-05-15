@@ -9,6 +9,7 @@
     <description>Encoded PowerShell execution detected</description>
 
     <mitre>
+      <id>T1059</id>
       <id>T1059.001</id>
     </mitre>
 
