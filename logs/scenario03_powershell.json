@@ -1,0 +1,88 @@
+{
+  "_index": "wazuh-alerts-4.x-2026.05.16",
+  "_id": "kyWoMZ4BIfVgjB3jVlhH",
+  "_version": 1,
+  "_score": null,
+  "_source": {
+    "input": {
+      "type": "log"
+    },
+    "agent": {
+      "ip": "192.168.1.200",
+      "name": "WIN-FAOMJMK7SE9",
+      "id": "004"
+    },
+    "manager": {
+      "name": "wazuh-lab"
+    },
+    "data": {
+      "win": {
+        "eventdata": {
+          "messageNumber": "1",
+          "messageTotal": "1",
+          "scriptBlockText": "$null = secedit /export /cfg $env:temp/secexport.cfg; $(gc $env:temp/secexport.cfg | Select-String \\\"LSAAnonymousNameLookup\\\").ToString().Split(\\\"=\\\")[1].Trim()",
+          "scriptBlockId": "ee82be86-aacd-4684-8a07-596106dc48d3"
+        },
+        "system": {
+          "eventID": "4104",
+          "keywords": "0x0",
+          "providerGuid": "{a0c1853b-5c40-4b15-8766-3cf1c58f985a}",
+          "level": "5",
+          "channel": "Microsoft-Windows-PowerShell/Operational",
+          "opcode": "15",
+          "message": "\"Creating Scriptblock text (1 of 1):\r\n$null = secedit /export /cfg $env:temp/secexport.cfg; $(gc $env:temp/secexport.cfg | Select-String \"LSAAnonymousNameLookup\").ToString().Split(\"=\")[1].Trim()\r\n\r\nScriptBlock ID: ee82be86-aacd-4684-8a07-596106dc48d3\r\nPath: \"",
+          "version": "1",
+          "systemTime": "2026-05-16T16:38:43.3937023Z",
+          "eventRecordID": "689",
+          "threadID": "3492",
+          "computer": "WIN-FAOMJMK7SE9.lab.local",
+          "task": "2",
+          "processID": "4788",
+          "severityValue": "VERBOSE",
+          "providerName": "Microsoft-Windows-PowerShell"
+        }
+      }
+    },
+    "rule": {
+      "firedtimes": 20,
+      "mail": false,
+      "level": 4,
+      "description": "Powershell script querying system environment variables",
+      "groups": [
+        "windows",
+        " powershell"
+      ],
+      "mitre": {
+        "technique": [
+          "System Information Discovery"
+        ],
+        "id": [
+          "T1082"
+        ],
+        "tactic": [
+          "Discovery"
+        ]
+      },
+      "id": "91816"
+    },
+    "location": "EventChannel",
+    "decoder": {
+      "name": "windows_eventchannel"
+    },
+    "id": "1778949574.4648605",
+    "timestamp": "2026-05-16T16:39:34.324+0000"
+  },
+  "fields": {
+    "timestamp": [
+      "2026-05-16T16:39:34.324Z"
+    ]
+  },
+  "highlight": {
+    "data.win.system.eventID": [
+      "@opensearch-dashboards-highlighted-field@4104@/opensearch-dashboards-highlighted-field@"
+    ]
+  },
+  "sort": [
+    1778949574324
+  ]
+}
