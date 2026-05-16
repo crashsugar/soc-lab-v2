@@ -1,0 +1,54 @@
+<!-- Scenario 03 - Multi Stage Attack Detection Rules -->
+<!-- Place in: /var/ossec/etc/rules/local_rules.xml on Wazuh Manager -->
+
+<group name="scenario03,attack,mitre">
+
+  <!-- Stage 1: Encoded PowerShell -->
+  <rule id="100301" level="12">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">4104</field>
+    <field name="win.eventdata.scriptBlockText" type="pcre2">(?i)-enc|-encodedcommand</field>
+    <description>Scenario03 Stage1: Encoded PowerShell execution detected</description>
+    <mitre>
+      <id>T1059.001</id>
+    </mitre>
+    <group>powershell,encoded,execution</group>
+  </rule>
+
+  <!-- Stage 2: Domain Admin Enumeration -->
+  <rule id="100302" level="10">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">1</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)net.exe.*domain admins</field>
+    <description>Scenario03 Stage2: Domain Admin group enumeration via net.exe</description>
+    <mitre>
+      <id>T1069.002</id>
+    </mitre>
+    <group>enumeration,discovery,domain</group>
+  </rule>
+
+  <!-- Stage 3: Registry Persistence -->
+  <rule id="100303" level="13">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">13</field>
+    <field name="win.eventdata.targetObject" type="pcre2">(?i)CurrentVersion\\Run</field>
+    <description>Scenario03 Stage3: Registry Run key persistence detected</description>
+    <mitre>
+      <id>T1547.001</id>
+    </mitre>
+    <group>persistence,registry</group>
+  </rule>
+
+  <!-- Stage 4: Suspicious File Drop -->
+  <rule id="100304" level="10">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">11</field>
+    <field name="win.eventdata.targetFilename" type="pcre2">(?i)\\temp\\.*\.(exe|bat|ps1|vbs)</field>
+    <description>Scenario03 Stage4: Suspicious file created in temp directory</description>
+    <mitre>
+      <id>T1105</id>
+    </mitre>
+    <group>filedrop,execution</group>
+  </rule>
+
+</group>
