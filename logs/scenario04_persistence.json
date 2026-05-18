@@ -1,35 +1,24 @@
 {
   "_index": "wazuh-alerts-4.x-2026.05.18",
-  "_id": "1q5fPJ4BLCrpQ27Ww3gy",
+  "_id": "va5dPJ4BLCrpQ27W2njW",
   "_version": 1,
   "_score": null,
   "_source": {
     "syscheck": {
-      "uname_after": "root",
-      "mtime_after": "2026-05-18T18:36:01",
-      "size_after": "16777216",
-      "gid_after": "101",
-      "md5_before": "335878ff892cb944d315f8cc84b27cac",
-      "diff": "Binary files queue/diff/tmp/tmp-entry and /var/log/journal/c408c8fcd90c4dc298e079e315a76378/system.journal differ\n",
-      "sha256_before": "e707ce16ce49201ff9ecf18676cde75bdd982ae20f0d8ef624ba724c0995abd6",
-      "mtime_before": "2026-05-18T18:35:01",
+      "uname_after": "wazuh",
+      "mtime_after": "2026-05-18T18:33:55",
+      "size_after": "1228",
+      "gid_after": "112",
       "mode": "realtime",
-      "path": "/var/log/journal/c408c8fcd90c4dc298e079e315a76378/system.journal",
-      "sha1_after": "8d660e0cefdabc0b509e02be6c0717aac93c9c38",
-      "changed_attributes": [
-        "mtime",
-        "md5",
-        "sha1",
-        "sha256"
-      ],
-      "gname_after": "systemd-journal",
-      "uid_after": "0",
-      "perm_after": "rw-r-----",
-      "event": "modified",
-      "md5_after": "6c254da929615864e1a0cb2f72550d82",
-      "sha1_before": "e946a369bbe3218ad44a027aa31752fc96bec7c7",
-      "sha256_after": "f69593d2b31ccb03dc9c75313dd37b7046d605669db62b2a590bf090ac65c686",
-      "inode_after": 32340
+      "path": "/var/spool/cron/crontabs/tmp.a2DPSJ",
+      "sha1_after": "ef64971e0022a33ea924417d790d7a06ed3a2545",
+      "gname_after": "crontab",
+      "uid_after": "1000",
+      "perm_after": "rw-------",
+      "event": "deleted",
+      "md5_after": "13716ef76bb25ce8e071a8a59f54ab25",
+      "sha256_after": "1f6c0dd1ec9459728eb162738b1594c0df1adfcad5dbbc504f2f2aa4fce38c34",
+      "inode_after": 406
     },
     "input": {
       "type": "log"
@@ -60,11 +49,11 @@
         "CC7.2",
         "CC7.3"
       ],
-      "description": "Integrity checksum changed.",
+      "description": "File deleted.",
       "groups": [
         "ossec",
         "syscheck",
-        "syscheck_entry_modified",
+        "syscheck_entry_deleted",
         "syscheck_file"
       ],
       "nist_800_53": [
@@ -73,48 +62,51 @@
       "gdpr": [
         "II_5.1.f"
       ],
-      "firedtimes": 22,
+      "firedtimes": 1,
       "mitre": {
         "technique": [
-          "Stored Data Manipulation"
+          "File Deletion",
+          "Data Destruction"
         ],
         "id": [
-          "T1565.001"
+          "T1070.004",
+          "T1485"
         ],
         "tactic": [
+          "Defense Evasion",
           "Impact"
         ]
       },
-      "id": "550",
+      "id": "553",
       "gpg13": [
         "4.11"
       ]
     },
     "location": "syscheck",
     "decoder": {
-      "name": "syscheck_integrity_changed"
+      "name": "syscheck_deleted"
     },
-    "id": "1779129362.137073",
-    "full_log": "File '/var/log/journal/c408c8fcd90c4dc298e079e315a76378/system.journal' modified\nMode: realtime\nChanged attributes: mtime,md5,sha1,sha256\nOld modification time was: '1779129301', now it is '1779129361'\nOld md5sum was: '335878ff892cb944d315f8cc84b27cac'\nNew md5sum is : '6c254da929615864e1a0cb2f72550d82'\nOld sha1sum was: 'e946a369bbe3218ad44a027aa31752fc96bec7c7'\nNew sha1sum is : '8d660e0cefdabc0b509e02be6c0717aac93c9c38'\nOld sha256sum was: 'e707ce16ce49201ff9ecf18676cde75bdd982ae20f0d8ef624ba724c0995abd6'\nNew sha256sum is : 'f69593d2b31ccb03dc9c75313dd37b7046d605669db62b2a590bf090ac65c686'\n",
-    "timestamp": "2026-05-18T18:36:02.265+0000"
+    "id": "1779129236.105426",
+    "full_log": "File '/var/spool/cron/crontabs/tmp.a2DPSJ' deleted\nMode: realtime\n",
+    "timestamp": "2026-05-18T18:33:56.003+0000"
   },
   "fields": {
     "syscheck.mtime_after": [
-      "2026-05-18T18:36:01.000Z"
-    ],
-    "syscheck.mtime_before": [
-      "2026-05-18T18:35:01.000Z"
+      "2026-05-18T18:33:55.000Z"
     ],
     "timestamp": [
-      "2026-05-18T18:36:02.265Z"
+      "2026-05-18T18:33:56.003Z"
     ]
   },
   "highlight": {
     "rule.groups": [
       "@opensearch-dashboards-highlighted-field@syscheck@/opensearch-dashboards-highlighted-field@"
+    ],
+    "syscheck.path": [
+      "@opensearch-dashboards-highlighted-field@/var/spool/cron/crontabs/tmp.a2DPSJ@/opensearch-dashboards-highlighted-field@"
     ]
   },
   "sort": [
-    1779129362265
+    1779129236003
   ]
 }
