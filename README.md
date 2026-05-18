@@ -15,7 +15,7 @@ Domain Controller and analyzes the resulting telemetry in Wazuh and Sysmon.
 | Rule ID | Description | Severity |
 |---|---|---|
 | 92213 | Executable file dropped in folder commonly used by malware | 12 (High) |
-| 100101 | Encoded PowerShell execution detected | 12 (High) |
+| 100100 | Encoded PowerShell execution detected | 12 (High) |
 ### Evidence
 - `logs/scenario01_powershell.json` — Event ID 1
 - `logs/scenario01_filedrop.json` — Event ID 11
