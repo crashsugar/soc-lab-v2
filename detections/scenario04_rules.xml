@@ -1,0 +1,50 @@
+<!-- Scenario 04 - Linux SSH Brute Force + Persistence Detection Rules -->
+
+<group name="scenario04,attack,mitre,linux">
+
+  <!-- Stage 1: SSH Brute Force -->
+  <rule id="100401" level="10">
+    <if_sid>5700</if_sid>
+    <match>Failed password</match>
+    <same_source_ip />
+    <description>Scenario04 Stage1: Multiple SSH authentication failures - possible brute force</description>
+    <mitre>
+      <id>T1110.001</id>
+    </mitre>
+    <group>authentication_failed,bruteforce,ssh</group>
+  </rule>
+
+  <!-- Stage 2: Successful Login After Failures -->
+  <rule id="100402" level="12">
+    <if_sid>5715</if_sid>
+    <same_source_ip />
+    <description>Scenario04 Stage2: Successful SSH login after multiple failures</description>
+    <mitre>
+      <id>T1078</id>
+    </mitre>
+    <group>authentication_success,ssh</group>
+  </rule>
+
+  <!-- Stage 3: Cron Persistence -->
+  <rule id="100403" level="12">
+    <if_sid>550,554</if_sid>
+    <field name="syscheck.path">/var/spool/cron</field>
+    <description>Scenario04 Stage3: Crontab modification detected - possible persistence</description>
+    <mitre>
+      <id>T1053.003</id>
+    </mitre>
+    <group>persistence,cron,syscheck</group>
+  </rule>
+
+  <!-- Stage 4: Log Tampering -->
+  <rule id="100404" level="13">
+    <if_sid>550,554</if_sid>
+    <field name="syscheck.path">/var/log/auth.log</field>
+    <description>Scenario04 Stage4: auth.log modification detected - possible log tampering</description>
+    <mitre>
+      <id>T1070.003</id>
+    </mitre>
+    <group>log_tampering,syscheck,defense_evasion</group>
+  </rule>
+
+</group>
