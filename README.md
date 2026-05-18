@@ -84,3 +84,34 @@ encoded PowerShell, domain enumeration, registry persistence, and file drop.
 - `logs/scenario03_filedrop.json` — Event ID 11
 - `detections/scenario03_rules.xml` — Wazuh detection rules
 - `screenshots/` — Dashboard evidence per stage
+
+## Scenario 04 — Linux SSH Brute Force + Persistence
+### Overview
+Simulates a multi-stage Linux attack chain involving SSH brute force, successful
+authentication, cron job persistence, and log tampering on an Ubuntu Server.
+### Environment
+- Attacker: Kali Linux (Live USB)
+- Victim: Ubuntu Server + Wazuh Agent
+- SIEM: Wazuh Manager + Agent
+- Logging: auth.log + Wazuh FIM
+### Attack Chain
+| Stage | Technique | MITRE ID | Command |
+|---|---|---|---|
+| 1 | SSH Brute Force | T1110.001 | `hydra -l ubuntu -P passwords.txt ssh://<ip>` |
+| 2 | Successful SSH Login | T1078 | `ssh ubuntu@<ip>` |
+| 3 | Cron Persistence | T1053.003 | `crontab -e` |
+| 4 | Log Tampering | T1070.003 | `cat /dev/null > /var/log/auth.log` |
+### Detections
+| Rule ID | Description | Severity |
+|---|---|---|
+| 100401 | SSH brute force detected | 10 (Medium) |
+| 100402 | Successful login after failures | 12 (High) |
+| 100403 | Crontab modification detected | 12 (High) |
+| 100404 | auth.log tampering detected | 13 (Critical) |
+### Evidence
+- `logs/scenario04_bruteforce.json` — Failed SSH attempts
+- `logs/scenario04_ssh_login.json` — Successful login
+- `logs/scenario04_persistence.json` — Crontab FIM alert
+- `logs/scenario04_logtamper.json` — auth.log FIM alert
+- `detections/scenario04_rules.xml` — Wazuh detection rules
+- `screenshots/` — Dashboard evidence per stage
