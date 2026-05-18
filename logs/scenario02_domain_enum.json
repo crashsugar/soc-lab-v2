@@ -1,1 +1,108 @@
+{
+  "_index": "wazuh-alerts-4.x-2026.05.15",
+  "_id": "u2S7K54BHy02julq-BYd",
+  "_version": 1,
+  "_score": null,
+  "_source": {
+    "input": {
+      "type": "log"
+    },
+    "agent": {
+      "ip": "192.168.1.200",
+      "name": "WIN-FAOMJMK7SE9",
+      "id": "004"
+    },
+    "manager": {
+      "name": "wazuh-lab"
+    },
+    "data": {
+      "win": {
+        "eventdata": {
+          "originalFileName": "net1.exe",
+          "image": "C:\\\\Windows\\\\System32\\\\net1.exe",
+          "product": "Microsoft® Windows® Operating System",
+          "parentProcessGuid": "{6c970575-35a9-6a03-1d02-000000000700}",
+          "description": "Net Command",
+          "logonGuid": "{6c970575-2960-6a03-fe11-120000000000}",
+          "parentCommandLine": "\\\"C:\\\\Windows\\\\system32\\\\net.exe\\\" group \\\"Domain Admins\\\" /domain",
+          "processGuid": "{6c970575-35a9-6a03-1e02-000000000700}",
+          "logonId": "0x1211fe",
+          "parentProcessId": "5708",
+          "processId": "5208",
+          "currentDirectory": "C:\\\\Users\\\\Administrator\\\\",
+          "utcTime": "2026-05-12 14:14:01.899",
+          "hashes": "MD5=36EC62D75C7B1C6C6D166995C9662DD5,SHA256=CB320DFCD6B635BD13AD840FD271E134CC5318339487894FA90E7101195FAE23,IMPHASH=76EE66A0F294EAB08DCAEF5E64FBF02F",
+          "parentImage": "C:\\\\Windows\\\\System32\\\\net.exe",
+          "company": "Microsoft Corporation",
+          "commandLine": "C:\\\\Windows\\\\system32\\\\net1 group \\\"Domain Admins\\\" /domain",
+          "integrityLevel": "High",
+          "fileVersion": "10.0.20348.469 (WinBuild.160101.0800)",
+          "user": "LAB\\\\Administrator",
+          "terminalSessionId": "1",
+          "parentUser": "LAB\\\\Administrator"
+        },
+        "system": {
+          "eventID": "1",
+          "keywords": "0x8000000000000000",
+          "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+          "level": "4",
+          "channel": "Microsoft-Windows-Sysmon/Operational",
+          "opcode": "0",
+          "message": "\"Process Create:\r\nRuleName: -\r\nUtcTime: 2026-05-12 14:14:01.899\r\nProcessGuid: {6c970575-35a9-6a03-1e02-000000000700}\r\nProcessId: 5208\r\nImage: C:\\Windows\\System32\\net1.exe\r\nFileVersion: 10.0.20348.469 (WinBuild.160101.0800)\r\nDescription: Net Command\r\nProduct: Microsoft® Windows® Operating System\r\nCompany: Microsoft Corporation\r\nOriginalFileName: net1.exe\r\nCommandLine: C:\\Windows\\system32\\net1 group \"Domain Admins\" /domain\r\nCurrentDirectory: C:\\Users\\Administrator\\\r\nUser: LAB\\Administrator\r\nLogonGuid: {6c970575-2960-6a03-fe11-120000000000}\r\nLogonId: 0x1211FE\r\nTerminalSessionId: 1\r\nIntegrityLevel: High\r\nHashes: MD5=36EC62D75C7B1C6C6D166995C9662DD5,SHA256=CB320DFCD6B635BD13AD840FD271E134CC5318339487894FA90E7101195FAE23,IMPHASH=76EE66A0F294EAB08DCAEF5E64FBF02F\r\nParentProcessGuid: {6c970575-35a9-6a03-1d02-000000000700}\r\nParentProcessId: 5708\r\nParentImage: C:\\Windows\\System32\\net.exe\r\nParentCommandLine: \"C:\\Windows\\system32\\net.exe\" group \"Domain Admins\" /domain\r\nParentUser: LAB\\Administrator\"",
+          "version": "5",
+          "systemTime": "2026-05-12T14:14:01.9062234Z",
+          "eventRecordID": "1019",
+          "threadID": "496",
+          "computer": "WIN-FAOMJMK7SE9.lab.local",
+          "task": "1",
+          "processID": "2408",
+          "severityValue": "INFORMATION",
+          "providerName": "Microsoft-Windows-Sysmon"
+        }
+      }
+    },
+    "rule": {
+      "firedtimes": 1,
+      "mail": false,
+      "level": 3,
+      "description": "Discovery activity executed",
+      "groups": [
+        "sysmon",
+        "sysmon_eid1_detections",
+        "windows"
+      ],
+      "mitre": {
+        "technique": [
+          "Account Discovery"
+        ],
+        "id": [
+          "T1087"
+        ],
+        "tactic": [
+          "Discovery"
+        ]
+      },
+      "id": "92031"
+    },
+    "location": "EventChannel",
+    "decoder": {
+      "name": "windows_eventchannel"
+    },
+    "id": "1778850192.107016",
+    "timestamp": "2026-05-15T13:03:12.026+0000"
+  },
+  "fields": {
+    "timestamp": [
+      "2026-05-15T13:03:12.026Z"
+    ]
+  },
+  "highlight": {
+    "data.win.system.eventID": [
+      "@opensearch-dashboards-highlighted-field@1@/opensearch-dashboards-highlighted-field@"
+    ]
+  },
+  "sort": [
+    1778850192026
+  ]
+}
 
