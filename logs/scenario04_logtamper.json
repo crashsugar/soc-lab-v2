@@ -1,0 +1,120 @@
+{
+  "_index": "wazuh-alerts-4.x-2026.05.18",
+  "_id": "2K5gPJ4BLCrpQ27WmXj2",
+  "_version": 1,
+  "_score": null,
+  "_source": {
+    "syscheck": {
+      "size_before": "631",
+      "uname_after": "syslog",
+      "mtime_after": "2026-05-18T18:37:01",
+      "size_after": "727",
+      "gid_after": "4",
+      "md5_before": "67203b2890fbc6e36ad0aaf436042788",
+      "diff": "6a7\n> May 18 20:37:01 ubuntu-agent CRON[29989]: pam_unix(cron:session): session closed for user wazuh\n",
+      "sha256_before": "22fd61b72c2bb3cdecf8c21ceb5cbbcb470098883ee35b65c079196c7a83ec1a",
+      "mode": "realtime",
+      "path": "/var/log/auth.log",
+      "sha1_after": "67f441e3efe0bc3098d594b652923c7fc0f51ba2",
+      "changed_attributes": [
+        "size",
+        "md5",
+        "sha1",
+        "sha256"
+      ],
+      "gname_after": "adm",
+      "uid_after": "106",
+      "perm_after": "rw-r-----",
+      "event": "modified",
+      "md5_after": "d91dc1f4aa7aa13f9f99620e9afb8cf6",
+      "sha1_before": "d05d869ca997ffbacab937d1a19c78edbe6f711c",
+      "sha256_after": "89e33407ee143cd3010851671aacd7787000ec698703c2f861706963cb8646a6",
+      "inode_after": 18511
+    },
+    "input": {
+      "type": "log"
+    },
+    "agent": {
+      "ip": "192.168.1.184",
+      "name": "ubuntu-agent",
+      "id": "003"
+    },
+    "manager": {
+      "name": "wazuh-lab"
+    },
+    "rule": {
+      "mail": false,
+      "level": 7,
+      "pci_dss": [
+        "11.5"
+      ],
+      "hipaa": [
+        "164.312.c.1",
+        "164.312.c.2"
+      ],
+      "tsc": [
+        "PI1.4",
+        "PI1.5",
+        "CC6.1",
+        "CC6.8",
+        "CC7.2",
+        "CC7.3"
+      ],
+      "description": "Integrity checksum changed.",
+      "groups": [
+        "ossec",
+        "syscheck",
+        "syscheck_entry_modified",
+        "syscheck_file"
+      ],
+      "nist_800_53": [
+        "SI.7"
+      ],
+      "gdpr": [
+        "II_5.1.f"
+      ],
+      "firedtimes": 24,
+      "mitre": {
+        "technique": [
+          "Stored Data Manipulation"
+        ],
+        "id": [
+          "T1565.001"
+        ],
+        "tactic": [
+          "Impact"
+        ]
+      },
+      "id": "550",
+      "gpg13": [
+        "4.11"
+      ]
+    },
+    "location": "syscheck",
+    "decoder": {
+      "name": "syscheck_integrity_changed"
+    },
+    "id": "1779129421.139936",
+    "full_log": "File '/var/log/auth.log' modified\nMode: realtime\nChanged attributes: size,md5,sha1,sha256\nSize changed from '631' to '727'\nOld md5sum was: '67203b2890fbc6e36ad0aaf436042788'\nNew md5sum is : 'd91dc1f4aa7aa13f9f99620e9afb8cf6'\nOld sha1sum was: 'd05d869ca997ffbacab937d1a19c78edbe6f711c'\nNew sha1sum is : '67f441e3efe0bc3098d594b652923c7fc0f51ba2'\nOld sha256sum was: '22fd61b72c2bb3cdecf8c21ceb5cbbcb470098883ee35b65c079196c7a83ec1a'\nNew sha256sum is : '89e33407ee143cd3010851671aacd7787000ec698703c2f861706963cb8646a6'\n",
+    "timestamp": "2026-05-18T18:37:01.390+0000"
+  },
+  "fields": {
+    "syscheck.mtime_after": [
+      "2026-05-18T18:37:01.000Z"
+    ],
+    "timestamp": [
+      "2026-05-18T18:37:01.390Z"
+    ]
+  },
+  "highlight": {
+    "rule.groups": [
+      "@opensearch-dashboards-highlighted-field@syscheck@/opensearch-dashboards-highlighted-field@"
+    ],
+    "syscheck.path": [
+      "@opensearch-dashboards-highlighted-field@/var/log/auth.log@/opensearch-dashboards-highlighted-field@"
+    ]
+  },
+  "sort": [
+    1779129421390
+  ]
+}
