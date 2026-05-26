@@ -115,3 +115,32 @@ authentication, cron job persistence, and log tampering on an Ubuntu Server.
 - `logs/scenario04_logtamper.json` — auth.log FIM alert
 - `detections/scenario04_rules.xml` — Wazuh detection rules
 - `screenshots/` — Dashboard evidence per stage
+
+## Scenario 07 — Microsoft Defender for Endpoint (EDR Detection)
+### Overview
+Deploys Microsoft Defender for Endpoint P2 on a Windows Server Domain Controller,
+executes a multi-stage attack chain, and validates detection using device timeline,
+Advanced Hunting KQL queries, and custom detection rules.
+### Environment
+- EDR: Microsoft Defender for Endpoint P2
+- Endpoint: Windows Server 2019 Domain Controller
+- Portal: security.microsoft.com
+### Attack Chain
+| Stage | Technique | MITRE ID | Command |
+|---|---|---|---|
+| 1 | Encoded PowerShell | T1059.001 | `powershell.exe -enc <base64>` |
+| 2 | Domain Admin Enumeration | T1069.002 | `net group "Domain Admins" /domain` |
+| 3 | Registry Persistence | T1547.001 | `reg add HKCU\...\Run /v Updater` |
+### Detections
+| Method | Description | Severity |
+|---|---|---|
+| Device Timeline | MITRE ATT&CK auto-tagged events | Automatic |
+| Advanced Hunting | KQL query across all 3 stages | Manual |
+| Custom Detection Rule | Real-time High alert on process execution | High |
+### Evidence
+- `logs/scenario07_advanced_hunting.json` — KQL export
+- `detections/scenario07_rules.md` — KQL rule documentation
+- `screenshots/scenario07_timeline.png` — Device timeline
+- `screenshots/scenario07_advanced_hunting.png` — KQL results
+- `screenshots/scenario07_detection_rule.png` — Custom rule
+- `screenshots/scenario07_alert.png` — Triggered alert
