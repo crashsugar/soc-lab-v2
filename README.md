@@ -116,6 +116,38 @@ authentication, cron job persistence, and log tampering on an Ubuntu Server.
 - `detections/scenario04_rules.xml` — Wazuh detection rules
 - `screenshots/` — Dashboard evidence per stage
 
+## Scenario 05 — Phishing Malicious Document Analysis (Passive)
+### Overview
+Passive static analysis of a real malicious Word document from MalwareBazaar.
+Identifies CVE-2017-11882 exploit technique, extracts IOCs, and documents
+findings as a SOC analyst triage report.
+### Environment
+- Analysis Machine: Ubuntu Server (isolated VM)
+- Tools: oletools, oleid, olevba, VirusTotal
+### Sample
+- SHA256: f26336dfb7477c2be6c38f459bed7c8351f8548acd344d5f291de17a9c9843cc
+- Type: DOCX with embedded RTF
+- Threat: CVE-2017-11882 Equation Editor RCE
+- VT Detection: 40/66
+### MITRE ATT&CK
+| Technique | ID |
+|---|---|
+| Phishing: Spearphishing Attachment | T1566.001 |
+| Exploit Public-Facing Application | T1203 |
+| Obfuscated Files or Information | T1027 |
+### Key Findings
+| IOC | Risk |
+|---|---|
+| aFChunk loading embedded RTF | High |
+| CVE-2017-11882 exploit | Critical |
+| Fake Microsoft author metadata | Medium |
+| 40/66 VT detections | Critical |
+### Evidence
+- `logs/scenario05_oleid_output.txt` — oleid analysis
+- `screenshots/scenario05_virustotal.png` — VT detections
+- `screenshots/scenario05_vt_details.png` — VT details
+- `screenshots/scenario05_vt_behaviour.png` — VT behaviour
+
 ## Scenario 07 — Microsoft Defender for Endpoint (EDR Detection)
 ### Overview
 Deploys Microsoft Defender for Endpoint P2 on a Windows Server Domain Controller,
