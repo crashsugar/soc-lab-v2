@@ -140,4 +140,73 @@ containing hex-encoded shellcode. No user interaction beyond opening the file
 is required. The document masquerades as a legitimate file using fake Microsoft
 authorship metadata.
 
+---
+
 ### Attack Chain
+
+Victim receives phishing email with .docx attachment
+↓
+Victim opens document
+↓
+altChunk loads urse.xml (malicious RTF)
+↓
+CVE-2017-11882 triggers Equation Editor exploit
+↓
+Shellcode executes → dropper downloads payload
+↓
+Trojan installed on victim machine
+
+---
+
+### Suspicious Indicators Summary
+| Indicator | Risk |
+|---|---|
+| Fake "Microsoft" author metadata | Medium |
+| aFChunk loading embedded RTF | High |
+| CVE-2017-11882 exploit technique | Critical |
+| Hex encoded payload in RTF | High |
+| 40/66 VT detections | Critical |
+| Trojan/Dropper classification | Critical |
+
+---
+
+## Detection Recommendations
+| Recommendation | Priority |
+|---|---|
+| Block documents with aFChunk relationships at email gateway | High |
+| Patch CVE-2017-11882 on all Office installations | Critical |
+| Enable Attack Surface Reduction rules for Office | High |
+| Scan attachments with sandbox before delivery | High |
+| Block Equation Editor (eqnedt32.exe) via AppLocker | High |
+
+---
+
+## Outcome
+Passive analysis successfully identified:
+- Exploit technique without executing the sample
+- CVE-2017-11882 as the attack vector
+- Multiple IOCs for detection and blocking
+- Full attack chain reconstruction from static analysis alone
+
+This validates:
+- Static malware analysis workflow
+- oletools usage for document analysis
+- IOC extraction and documentation
+- SOC triage report writing
+
+---
+
+## Evidence
+- `logs/scenario05_oleid_output.txt` — oleid analysis results
+- `screenshots/scenario05_virustotal.png` — VT detection results
+- `screenshots/scenario05_vt_details.png` — VT file details
+- `screenshots/scenario05_vt_behaviour.png` — VT behaviour tab
+
+---
+
+## References
+- [CVE-2017-11882](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-11882)
+- [T1566.001](https://attack.mitre.org/techniques/T1566/001/)
+- [T1203](https://attack.mitre.org/techniques/T1203/)
+- [T1027](https://attack.mitre.org/techniques/T1027/)
+- [MalwareBazaar Sample](https://bazaar.abuse.ch/sample/f26336dfb7477c2be6c38f459bed7c8351f8548acd344d5f291de17a9c9843cc/)
