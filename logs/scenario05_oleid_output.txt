@@ -1,0 +1,35 @@
+oleid 0.60.1 - http://decalage.info/oletools
+THIS IS WORK IN PROGRESS - Check updates regularly!
+Please report any issue at https://github.com/decalage2/oletools/issues
+
+Filename: f26336dfb7477c2be6c38f459bed7c8351f8548acd344d5f291de17a9c9843cc.docx
+WARNING    xml-parsing for word/urse.xml failed (not well-formed (invalid token): line 1, column 0). Run iter_non_xml to investigate.
+--------------------+--------------------+----------+--------------------------
+Indicator           |Value               |Risk      |Description
+--------------------+--------------------+----------+--------------------------
+File format         |MS Word 2007+       |info      |
+                    |Document (.docx)    |          |
+--------------------+--------------------+----------+--------------------------
+Container format    |OpenXML             |info      |Container type
+--------------------+--------------------+----------+--------------------------
+Encrypted           |False               |none      |The file is not encrypted
+--------------------+--------------------+----------+--------------------------
+VBA Macros          |No                  |none      |This file does not contain
+                    |                    |          |VBA macros.
+--------------------+--------------------+----------+--------------------------
+XLM Macros          |No                  |none      |This file does not contain
+                    |                    |          |Excel 4/XLM macros.
+--------------------+--------------------+----------+--------------------------
+External            |0                   |none      |External relationships
+Relationships       |                    |          |such as remote templates,
+                    |                    |          |remote OLE objects, etc
+--------------------+--------------------+----------+--------------------------
+Filename: cat
+Traceback (most recent call last):
+  File "/home/wazuh/oletools-env/bin/oleid", line 8, in <module>
+    sys.exit(main())
+  File "/home/wazuh/oletools-env/lib/python3.10/site-packages/oletools/oleid.py", line 539, in main
+    oleid = OleID(filename)
+  File "/home/wazuh/oletools-env/lib/python3.10/site-packages/oletools/oleid.py", line 236, in __init__
+    with open(filename, 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cat'
