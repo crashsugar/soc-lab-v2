@@ -48,6 +48,7 @@ using native Windows tools and analyzes detection capability in Wazuh and Sysmon
 - `screenshots/scenario02_domain_admins.png` — Dashboard evidence
 
 ---
+
 ## Scenario 03 — Multi-Stage Attack (PowerShell + Enumeration + Persistence)
 
 ### Overview
@@ -85,6 +86,8 @@ encoded PowerShell, domain enumeration, registry persistence, and file drop.
 - `detections/scenario03_rules.xml` — Wazuh detection rules
 - `screenshots/` — Dashboard evidence per stage
 
+---
+
 ## Scenario 04 — Linux SSH Brute Force + Persistence
 ### Overview
 Simulates a multi-stage Linux attack chain involving SSH brute force, successful
@@ -115,6 +118,8 @@ authentication, cron job persistence, and log tampering on an Ubuntu Server.
 - `logs/scenario04_logtamper.json` — auth.log FIM alert
 - `detections/scenario04_rules.xml` — Wazuh detection rules
 - `screenshots/` — Dashboard evidence per stage
+
+---
 
 ## Scenario 05 — Phishing Malicious Document Analysis (Passive)
 ### Overview
@@ -147,6 +152,8 @@ findings as a SOC analyst triage report.
 - `screenshots/scenario05_virustotal.png` — VT detections
 - `screenshots/scenario05_vt_details.png` — VT details
 - `screenshots/scenario05_vt_behaviour.png` — VT behaviour
+
+---
 
 ## Scenario 06 — Mimikatz Credential Dumping
 ### Overview
@@ -181,6 +188,8 @@ and Microsoft Defender for Endpoint.
 - `logs/scenario06_mde_incidents.csv` — MDE incidents
 - `screenshots/` — Wazuh and MDE evidence
 
+---
+
 ## Scenario 07 — Microsoft Defender for Endpoint (EDR Detection)
 ### Overview
 Deploys Microsoft Defender for Endpoint P2 on a Windows Server Domain Controller,
@@ -209,3 +218,5 @@ Advanced Hunting KQL queries, and custom detection rules.
 - `screenshots/scenario07_advanced_hunting.png` — KQL results
 - `screenshots/scenario07_detection_rule.png` — Custom rule
 - `screenshots/scenario07_alert.png` — Triggered alert
+
+---
