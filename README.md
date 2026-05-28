@@ -148,6 +148,39 @@ findings as a SOC analyst triage report.
 - `screenshots/scenario05_vt_details.png` — VT details
 - `screenshots/scenario05_vt_behaviour.png` — VT behaviour
 
+## Scenario 06 — Mimikatz Credential Dumping
+### Overview
+Executes Mimikatz on a Windows Server Domain Controller to simulate credential
+dumping via LSASS memory access. Detects and compares alerts across Wazuh/Sysmon
+and Microsoft Defender for Endpoint.
+### Environment
+- Target: Windows Server 2022 Domain Controller
+- Tool: Mimikatz v2.2.0
+- SIEM: Wazuh + Sysmon
+- EDR: Microsoft Defender for Endpoint P2
+### Attack Chain
+| Stage | Technique | MITRE ID | Command |
+|---|---|---|---|
+| 1 | Disable Defender | T1562.001 | `Set-MpPreference -DisableRealtimeMonitoring $true` |
+| 2 | Request debug privilege | T1134 | `privilege::debug` |
+| 3 | Dump LSASS credentials | T1003.001 | `sekurlsa::logonpasswords` |
+| 4 | Dump LSA secrets | T1003.004 | `lsadump::lsa /patch` |
+### Key Findings
+- krbtgt hash obtained — Golden Ticket attack possible
+- All domain account NTLM hashes dumped
+- MDE generated Priority 100 incident with automatic account containment
+### Detections
+| Tool | Detection | Severity |
+|---|---|---|
+| Wazuh Rule 92900 | LSASS process access by mimikatz.exe | 12 (High) |
+| MDE | Mimikatz credential theft tool | High |
+| MDE | Hands-on keyboard attack | High — Priority 100 |
+| MDE | LSASS process memory modified | High |
+### Evidence
+- `logs/scenario06_wazuh_event10.json` — Wazuh Event ID 10
+- `logs/scenario06_mde_incidents.csv` — MDE incidents
+- `screenshots/` — Wazuh and MDE evidence
+
 ## Scenario 07 — Microsoft Defender for Endpoint (EDR Detection)
 ### Overview
 Deploys Microsoft Defender for Endpoint P2 on a Windows Server Domain Controller,
