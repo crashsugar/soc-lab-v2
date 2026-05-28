@@ -1,0 +1,97 @@
+{
+  "_index": "wazuh-alerts-4.x-2026.05.28",
+  "_id": "NLjSbp4B8KL_wOVZc8Ev",
+  "_version": 1,
+  "_score": null,
+  "_source": {
+    "input": {
+      "type": "log"
+    },
+    "agent": {
+      "ip": "192.168.1.200",
+      "name": "WIN-FAOMJMK7SE9",
+      "id": "004"
+    },
+    "manager": {
+      "name": "wazuh-lab"
+    },
+    "data": {
+      "win": {
+        "eventdata": {
+          "sourceThreadId": "7156",
+          "grantedAccess": "0x1010",
+          "targetProcessGUID": "{6c970575-39b9-6a18-0c00-000000000c00}",
+          "targetProcessId": "692",
+          "utcTime": "2026-05-28 13:40:37.416",
+          "sourceUser": "LAB\\\\Administrator",
+          "sourceProcessId": "6888",
+          "sourceImage": "C:\\\\tools\\\\mimi\\\\x64\\\\mimikatz.exe",
+          "targetImage": "C:\\\\Windows\\\\system32\\\\lsass.exe",
+          "sourceProcessGUID": "{6c970575-45b3-6a18-3902-000000000c00}",
+          "callTrace": "C:\\\\Windows\\\\SYSTEM32\\\\ntdll.dll+9f3b4|C:\\\\Windows\\\\System32\\\\KERNELBASE.dll+2aafe|C:\\\\tools\\\\mimi\\\\x64\\\\mimikatz.exe+c291e|C:\\\\tools\\\\mimi\\\\x64\\\\mimikatz.exe+c2cf5|C:\\\\tools\\\\mimi\\\\x64\\\\mimikatz.exe+c285d|C:\\\\tools\\\\mimi\\\\x64\\\\mimikatz.exe+85a44|C:\\\\tools\\\\mimi\\\\x64\\\\mimikatz.exe+8587c|C:\\\\tools\\\\mimi\\\\x64\\\\mimikatz.exe+85647|C:\\\\tools\\\\mimi\\\\x64\\\\mimikatz.exe+c97a5|C:\\\\Windows\\\\System32\\\\KERNEL32.DLL+14ed0|C:\\\\Windows\\\\SYSTEM32\\\\ntdll.dll+7e39b",
+          "targetUser": "NT AUTHORITY\\\\SYSTEM"
+        },
+        "system": {
+          "eventID": "10",
+          "keywords": "0x8000000000000000",
+          "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+          "level": "4",
+          "channel": "Microsoft-Windows-Sysmon/Operational",
+          "opcode": "0",
+          "message": "\"Process accessed:\r\nRuleName: -\r\nUtcTime: 2026-05-28 13:40:37.416\r\nSourceProcessGUID: {6c970575-45b3-6a18-3902-000000000c00}\r\nSourceProcessId: 6888\r\nSourceThreadId: 7156\r\nSourceImage: C:\\tools\\mimi\\x64\\mimikatz.exe\r\nTargetProcessGUID: {6c970575-39b9-6a18-0c00-000000000c00}\r\nTargetProcessId: 692\r\nTargetImage: C:\\Windows\\system32\\lsass.exe\r\nGrantedAccess: 0x1010\r\nCallTrace: C:\\Windows\\SYSTEM32\\ntdll.dll+9f3b4|C:\\Windows\\System32\\KERNELBASE.dll+2aafe|C:\\tools\\mimi\\x64\\mimikatz.exe+c291e|C:\\tools\\mimi\\x64\\mimikatz.exe+c2cf5|C:\\tools\\mimi\\x64\\mimikatz.exe+c285d|C:\\tools\\mimi\\x64\\mimikatz.exe+85a44|C:\\tools\\mimi\\x64\\mimikatz.exe+8587c|C:\\tools\\mimi\\x64\\mimikatz.exe+85647|C:\\tools\\mimi\\x64\\mimikatz.exe+c97a5|C:\\Windows\\System32\\KERNEL32.DLL+14ed0|C:\\Windows\\SYSTEM32\\ntdll.dll+7e39b\r\nSourceUser: LAB\\Administrator\r\nTargetUser: NT AUTHORITY\\SYSTEM\"",
+          "version": "3",
+          "systemTime": "2026-05-28T13:40:37.4217249Z",
+          "eventRecordID": "5318",
+          "threadID": "4548",
+          "computer": "WIN-FAOMJMK7SE9.lab.local",
+          "task": "10",
+          "processID": "3120",
+          "severityValue": "INFORMATION",
+          "providerName": "Microsoft-Windows-Sysmon"
+        }
+      }
+    },
+    "rule": {
+      "firedtimes": 1,
+      "mail": true,
+      "level": 12,
+      "description": "Lsass process was accessed by C:\\\\tools\\\\mimi\\\\x64\\\\mimikatz.exe with read permissions, possible credential dump",
+      "groups": [
+        "sysmon",
+        "sysmon_eid10_detections",
+        "windows"
+      ],
+      "mitre": {
+        "technique": [
+          "LSASS Memory"
+        ],
+        "id": [
+          "T1003.001"
+        ],
+        "tactic": [
+          "Credential Access"
+        ]
+      },
+      "id": "92900"
+    },
+    "location": "EventChannel",
+    "decoder": {
+      "name": "windows_eventchannel"
+    },
+    "id": "1779975739.2564160",
+    "timestamp": "2026-05-28T13:42:19.877+0000"
+  },
+  "fields": {
+    "timestamp": [
+      "2026-05-28T13:42:19.877Z"
+    ]
+  },
+  "highlight": {
+    "data.win.system.eventID": [
+      "@opensearch-dashboards-highlighted-field@10@/opensearch-dashboards-highlighted-field@"
+    ]
+  },
+  "sort": [
+    1779975739877
+  ]
+}
